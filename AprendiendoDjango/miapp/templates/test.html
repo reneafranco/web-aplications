@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load filters %}
+
+
+{% block content %}
+<h1 class="title">Pagina de Pruebas</h1>
+<h3> Años hasta el 2050 </h3>
+<ul>  
+    {% for years in rango %}
+        {% if years|divisibleby:2 == True  %}
+            <li>{{years}}</li>
+        {% endif %}
+    {% empty %}
+        <li> No hay nada que mostrar   </li>
+    {% endfor %}
+</ul>  
+
+{{"Rene adonay"|saludo|safe}}
+{% endblock %}
+    

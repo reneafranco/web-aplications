@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title%} {{title}} {% endblock %}
+
+<!--Comentario HTML-->
+{% comment "Comentarios" %}
+los comentarios con django no son visibles cuando inspeccionas la pagina
+desde el navegador
+{% endcomment %}
+
+{% block content%}
+
+<h1 class="title">{{title}}</h1>
+{{nombre}}
+
+{% if nombre %}
+    {{nombre}}
+{% endif %}
+
+<h3>Listado de Lenguajes</h3>
+<ul>    
+    {% for lenguaje in lenguajes %}
+        <li>{{forloop.counter}}. {{lenguaje}}</li>
+    {% empty %}
+        <p>No hay lenguajes q que mostrar</p>
+    {% endfor %}
+</ul>
+
+{% include 'fecha_actual.html' with saludo="Hola" %}
+
+{% endblock %}

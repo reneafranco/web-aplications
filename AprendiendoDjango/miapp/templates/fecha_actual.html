@@ -1,0 +1,16 @@
+<br/>
+<hr/>
+<br/>
+<h1> {{saludo}} {{nombre}} </h1>
+<h1> Estamos en 2021</h1>
+<br/>
+<h3> Años hasta el 2050 </h3>
+<ul>  
+    {% for years in rango %}
+        {% if years|divisibleby:2 == True  %}
+            <li>{{years}}</li>
+        {% endif %}
+    {% empty %}
+        <li> No hay nada que mostrar   </li>
+    {% endfor %}
+</ul>  

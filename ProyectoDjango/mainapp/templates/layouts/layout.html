@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="utf8">
+    <head>
+        <title>
+            {% block title %}
+            {% endblock %}
+            | Rene franco
+        </title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <div id="logotipo">
+                <h1>Proyecto con Django</h1>
+                <img src="{% static 'images/logo.png' %}"/>
+            </div>
+        </header>
+        <div id="clearfix"></div>
+        <nav class="navegacion">
+            <ul>
+                <li><a href="{% url 'Inicio'%}">Inicio</a></li>
+                {% if user.email%}
+                    <li>
+                        <a href="{% url 'Articulos' %}">Categorias</a>
+                        <ul>
+                            {% for category in categories %}
+                                <li><a href="{% url 'category' category.0 %}">{{category.1}}</a></li>
+                            {% endfor %}  
+                        </ul>
+                    </li>
+
+                    {% for page in pages %}
+                        <li><a href="{% url 'Page' page.2%}">{{page.1}}</a></li>
+                    {% endfor %}
+                    
+                    <li><a href="{% url 'logout'%}">logout</a></li>
+
+                {% else %}
+                    <li><a href="{% url 'register'%}">Registro</a></li>
+                    <li><a href="{% url 'login'%}">Login</a></li>
+                {% endif %}   
+            </ul> 
+                
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+
+    <div id="content">
+        <div class="box">
+            {% block content%}
+            <!--Codigo que viene de las templates-->
+            {% endblock %}    
+        </div>
+
+    </div>
+
+    <footer>
+        Master en python &copy; Rene Franco - {% now "d/m/Y" %}
+    </footer>
+    </body>
+</html>

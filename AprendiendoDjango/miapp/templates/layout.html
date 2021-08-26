@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <meta charset="utf8">
+    <head>
+        <title>
+            {% block title %}
+            {% endblock %}
+            | Rene franco
+        </title>
+        {% load filters %}
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <header>
+            <div id="logotipo">
+                <h1>Sitio web con Django</h1>
+                <img src="{% static 'images/logo.png' %}"/>
+            </div>
+        </header>
+        <div id="clearfix"></div>
+        <nav class="navegacion">
+            <ul>
+                <li><a href="{% url 'Inicio'%}">Inicio</a></li>
+                <li><a href="{% url 'Articulos'%}">Articulos</a></li>
+                <li><a href="{% url 'hola_mundo'%}">Hola mundo</a></li>
+                <li><a href="{% url 'TESTING'%}">Pagina pruebas</a></li>
+                <li><a href="{% url 'Contacto'%}">Contacto</a></li>
+                <li><a href="{% url 'Create'%}">Crear Articulo </a></li>
+                <li><a href="{% url 'Full'%}">Crear Articulo 2 </a></li>
+            </ul> 
+        </nav>
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+
+    <div id="content">
+        <div class="box">
+            {% block content%}
+            <!--Codigo que viene de las templates-->
+            {% endblock %}    
+        </div>
+
+    </div>
+
+    <footer>
+        Master en python &copy; Rene Franco - {% now "d/m/Y" %}
+    </footer>
+    </body>
+</html>
